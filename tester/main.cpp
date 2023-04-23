@@ -91,24 +91,39 @@ void executeFileClients(File *file)
     Añadir test de todos los comando principales
 */
 
-int main(void)
+int main(int argc, char **argv)
 {
-	std::string option(getenv("TYPE"));
+	std::string option = "";
+	std::string serverIp = "127.0.0.1";
 
-	std::cout << "        " << ROJO_F << "Tester Options" << RESET << std::endl;
+	if(argc == 2)
+	{
+	    std::string op = argv[1];
+		if (op == "3")
+			option = "3";
+		else if (op == "2")
+			option = "2";
+		else
+		{
+			option = "1";
+			serverIp = argv[1];
+		}
+	}
+
+	std::cout << "        " << ROJO_F << "Tester Options" << option << RESET << std::endl;
 	std::cout << VERDE_T << "- - - - - - - - - - - - - - - - -" << RESET << std::endl;
-	std::cout << "1. Connect to Local Server" << std::endl;
-	std::cout << "2. Connect to Chat Hispano Server" << std::endl;
+	std::cout << "1. Single client" << std::endl;
+	std::cout << "2. Single client to Chat Hispano Server" << std::endl;
 	std::cout << "3. Automated Test" << std::endl << std::endl << ">> ";
 
-	// std::cin >> option; // comment for coverage
+	if(option.empty())
+		std::cin >> option; // comment for coverage
 	if (option == "1" || option == "2")
 	{
-		std::string server = "127.0.0.1";
 		if (option == "2")
-			server = "irc.irc-hispano.org";
-		std::cout << "Single Client to " + server + "\n";
-		Client *client = new Client("Testbot", "Testbot", "Testbot", server);
+			serverIp = "irc.irc-hispano.org";
+		std::cout << "Single Client to " + serverIp + "\n";
+		Client *client = new Client("Testbot", "Testbot", "Testbot", serverIp);
 		if (client->irc_connect())
 			return 1;
 		usleep(500);

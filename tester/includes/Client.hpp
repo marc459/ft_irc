@@ -277,21 +277,21 @@ class Client
 	void login()
 	{
 		std::cout << "CLIENT CONNECTS" << std::endl; // IF not exists STACKOVERFLOW
-		if (this->_pass != "")
+		/*if (this->_pass != "")
 		{
 			send("PASS " + this->_pass); // PASS <server_password>
 			usleep(1000);
-		}
+		}*/
 		send("NICK " + this->_name); // NICK <nickname>
 		std::string serverresp = reads();
-		int         i = 0;
+		/*int         i = 0;
 		while (std::string::npos != split(serverresp, ":")[0].find("433"))
 		{
 			send("NICK " + this->_name + std::to_string(i));
 			usleep(50000);
 			serverresp = reads();
 			i++;
-		}
+		}*/
 		usleep(1000);
 		send("USER " + this->_username + " 0 * : " + this->_name + " " + this->_realname); // USER TestBot 0 * : msantos- surname
 		this->_connected = true;

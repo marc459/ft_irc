@@ -122,9 +122,14 @@ re:			## Call fclean => all
 
 ##@ Testing
 
-test:		## Make test
+client:		## Make test
 	@make re -C ./tester
 	@make run -C ./tester
+
+test:		## Make test
+	@make re -C ./tester
+	@make bottest -C ./tester
+
 weechat:		## Make test
 	@make weechat -C ./tester
 

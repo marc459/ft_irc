@@ -117,7 +117,12 @@
 		"thread": "cpp",
 		"codecvt": "cpp",
 		"condition_variable": "cpp",
-		"future": "cpp"
+		"future": "cpp",
+		"compare": "cpp",
+		"concepts": "cpp",
+		"numbers": "cpp",
+		"semaphore": "cpp",
+		"stop_token": "cpp"
 	},
 	"files.autoSave": "off"
 }

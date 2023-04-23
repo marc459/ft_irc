@@ -79,7 +79,7 @@ TAB					=	$(shell printf "\t")
 all:	$(OUTPUT)
 
 run:
-	@ TYPE=3 ./ircserv_tester
+	@./ircserv_tester
 
 # Objects directory
 $(OBJ_DIR):
@@ -144,6 +144,9 @@ re:			## Call fclean => all
 
 cov:		## Make coverage files
 			gcov $(OBJS)
+
+bottest:
+			@./ircserv_tester 3
 
 
 rmcov:		## Clean coverage files

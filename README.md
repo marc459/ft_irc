@@ -34,7 +34,7 @@ make
 
 - `nc <serverip> <port>` //Basic connection needs server registration
 
-- `make test` //Basic connection, registration will be automated
+- `make client` //HomeMade Irc Client, basic connection, registration will be automated
 
 - `make weechat` //Official client created with docker image
 

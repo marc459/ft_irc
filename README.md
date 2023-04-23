@@ -6,9 +6,9 @@
 
 [![aborboll's 42 ft_irc Score](https://badge42.vercel.app/api/v2/cl2uk1olu003009mgf4ilrst7/project/2564130)](https://github.com/JaeSeoKim/badge42)
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/dalexhd/ft_irc?color=blue&label=Last%20commit&logo=git&maxAge=3600)](https://github.com/dalexhd/ft_irc/commits)
-[![GitHub issues](https://img.shields.io/github/issues/dalexhd/ft_irc?label=Issues&color=blue&maxAge=3600)](https://github.com/dalexhd/ft_irc/issues)
-[![GitHub forks](https://img.shields.io/github/forks/dalexhd/ft_irc?label=Forks&color=blue&maxAge=3600)](https://github.com/dalexhd/ft_irc/network)
+[![GitHub last commit](https://img.shields.io/github/last-commit/marc459/ft_irc?color=blue&label=Last%20commit&logo=git&maxAge=3600)](https://github.com/dalexhd/ft_irc/commits)
+[![GitHub issues](https://img.shields.io/github/issues/marc459/ft_irc?label=Issues&color=blue&maxAge=3600)](https://github.com/marc459/ft_irc/issues)
+[![GitHub forks](https://img.shields.io/github/forks/marc459/ft_irc?label=Forks&color=blue&maxAge=3600)](https://github.com/marc459/ft_irc/network)
 
 [![Test](https://github.com/dalexhd/ft_irc/workflows/Test/badge.svg)](https://github.com/dalexhd/ft_irc/actions?query=workflow:Test)
 [![codecov](https://codecov.io/gh/dalexhd/ft_irc/branch/main/graph/badge.svg?token=D8A1FV32VL)](https://codecov.io/gh/dalexhd/ft_irc)
@@ -16,10 +16,12 @@
 
 </div>
 
+# DESCRIPTION
+
+An IRC server is essentially a software program that provides a platform for users to communicate each other in a real-time text-based chat using a standardized protocol.
+
 # USAGE
 ## SERVER
-
-## Version used RFC 1459 https://datatracker.ietf.org/doc/html/rfc1459
 
 make
 
@@ -27,11 +29,39 @@ make
 
 ## CLIENT
 
-telnet `<serverip>` `<port>`
-          o
-nc `<serverip>` `<port>`
+[//]: # (There are 3 ways of connecting the IRC server)
 
- - The ircserver must be tested with Graphical Official Irc clients as limechat, weechat, textualchat
+
+- `nc <serverip> <port>` //Basic connection needs server registration
+
+- `make test` //Basic connection, registration will be automated
+
+- `make weechat` //Official client created with docker image
+
+
+Anyway,
+
+ The ircserver must be tested with Graphical Official Irc clients as limechat, weechat or textualchat
+
+## EXAMPLE:
+Init server, after that choose the client of your preference and write this commands.
+
+    NICK user
+    USER username servername hostname : realname
+    PASS pass     //if needed
+    JOIN #channel
+
+This will register yourserlf in IRC server and will join a channel.
+
+ ### Version used RFC 1459
+ https://datatracker.ietf.org/doc/html/rfc1459
+
+## FUTURE UPDATES
+
+- [x] Bot Tester
+- [] Web Client
+- [] Cipher messages
+- [] Videocalls
 
 ## COMMANDS DOCS
 

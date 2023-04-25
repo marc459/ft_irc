@@ -94,7 +94,7 @@ void executeFileClients(File *file)
 int main(int argc, char **argv)
 {
 	std::string option = "";
-	std::string serverIp = "127.0.0.1";
+	std::string serverIp = "192.168.60";
 
 	if(argc == 2)
 	{

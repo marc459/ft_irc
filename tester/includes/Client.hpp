@@ -12,6 +12,12 @@
 #include <sys/select.h>
 #include <unistd.h>
 #include <vector>
+#include <openssl/ssl.h>
+#include <openssl/err.h>
+
+// create SSL context and configure for client use
+SSL_CTX *ctx = SSL_CTX_new(TLS_client_method());
+//SSL_CTX_set_options(ctx, SSL_OP_NO_SSLv2 | SSL_OP_NO_SSLv3 | SSL_OP_NO_COMPRESSION);
 
 #include <chrono>
 #include <thread>
@@ -167,8 +173,27 @@ class Client
   public:
 	int send(std::string message)
 	{
-		std::string msg = message.append("\r\n");
-		return write(this->_socket, msg.c_str(), msg.length());
+		SSL *ssl = SSL_new(ctx);
+		SSL_set_fd(ssl, this->_socket);
+
+		// initiate SSL handshake to establish the encrypted connection
+		SSL_connect(ssl);
+
+		// encrypt data using SSL_write()
+		std::string sslmsg = message;
+		SSL_write(ssl, sslmsg.c_str(), sslmsg.length());
+
+		// close SSL connection and socket
+		SSL_shutdown(ssl);
+		SSL_free(ssl);
+		SSL_CTX_free(ctx);
+		close(this->_socket);
+		return 1;
+
+		//send(this->_socket, sslmsg.c_str(), len, 0);
+
+		/*std::string msg = message.append("\r\n");
+		return write(this->_socket, msg.c_str(), msg.length());*/
 	}
 
 	std::string reads(void)

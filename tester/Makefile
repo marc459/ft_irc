@@ -3,7 +3,7 @@ OUTPUT				=	ircserv_tester
 ifeq ($(shell whoami), runner)
 	CC				=	@g++ -std=c++11 -fprofile-arcs -ftest-coverage -O0 -fPIC
 else
-	CC				=	c++ -std=c++11 -L ./openssl -lssl -lcrypto
+	CC				=	c++ -std=c++11 -L ./openssl/ssl -lssl -lcrypto
 endif
 SH					=	@bash
 RM					=	@/bin/rm -rf
